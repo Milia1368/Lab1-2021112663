@@ -1,11 +1,21 @@
 package test1;
 
+<<<<<<< HEAD
 import java.util.Arrays;
 import java.util.HashMap;
+=======
+import java.util.HashMap;
+import java.util.List;
+>>>>>>> origin/master
 import java.util.Map;
 //import java.util.zip.Inflater;
 import java.util.Random;
 
+<<<<<<< HEAD
+=======
+import org.w3c.dom.Node;
+
+>>>>>>> origin/master
 public class WeightedDirectedGraph {
     private  Map<String, Map<String, Integer>> graph;//图是通过list实现的，每个节点用一个map表示，key是邻接节点，value是权重
     private  Map<String, Integer> graphnode;//用于建立节点名称和邻接矩阵编号对应关系
@@ -154,7 +164,10 @@ public class WeightedDirectedGraph {
         }
     }
     public void displayGraphPicture(String filePath) {
+<<<<<<< HEAD
         if (filePath==null) filePath=".\\data.csv";
+=======
+>>>>>>> origin/master
         D3api d3api=new D3api();
         System.out.println();
         System.out.println("图片："); 
@@ -225,6 +238,7 @@ public class WeightedDirectedGraph {
         
         return adjTable;
 }
+<<<<<<< HEAD
     public String findBridgeWords(String start,String end)//只返回第一个桥接词
     {
         int flag = 0;
@@ -448,4 +462,7 @@ public class WeightedDirectedGraph {
             }
         } return null;
     }
+=======
+
+>>>>>>> origin/master
 }
