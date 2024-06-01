@@ -41,6 +41,7 @@ public class lab1 {
             int randomIndex = new Random().nextInt(graph.getSize());
             return graph.walkBian(graph.getNodeName(randomIndex));
         }
+        //主函数
     public static void main(String[] args) {
         System.out.println("Hello, world!");
           String fileName ;
