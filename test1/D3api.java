@@ -1,9 +1,5 @@
 package test1;
 
-<<<<<<< HEAD
-=======
-import java.io.FileWriter;
->>>>>>> origin/master
 import java.io.File;
 import java.io.BufferedWriter;
 import java.util.List;
@@ -125,7 +121,6 @@ public void addPoints(String pointId,String x,String y){
 }
 public void show(String filePath){
     PointsToCsvFile(filePath);
-<<<<<<< HEAD
     try {
         // 执行二进制文件
         @SuppressWarnings("deprecation")
@@ -137,8 +132,6 @@ public void show(String filePath){
         e.printStackTrace();
     }
     
-=======
->>>>>>> origin/master
 }
 public static void main(String[] args) {
     D3api d3api = new D3api();

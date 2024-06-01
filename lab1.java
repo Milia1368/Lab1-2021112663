@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 import test1.WeightedDirectedGraph;
-//测试git
-//测试git
+
 public class lab1 {
     static WeightedDirectedGraph graph;
     static void createGraph(String text) {//构图
