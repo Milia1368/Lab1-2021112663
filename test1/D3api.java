@@ -1,12 +1,13 @@
 package test1;
 
-import java.io.File;
 import java.io.BufferedWriter;
-import java.util.List;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 坐标点参数实体类
  */
@@ -68,10 +69,19 @@ public class D3api {
  * @param pointsList
  * @return
  */
-private List<PointsParamDto> pointsList;
+private final List<PointsParamDto> pointsList;
 public D3api(){
 	pointsList = new ArrayList<PointsParamDto>();
 }
+
+public static void main(String[] args) {
+    D3api d3api = new D3api();
+    d3api.addPoints("1","10","20");
+    d3api.addPoints("2","30","40");
+    d3api.addPoints("3","50","60");
+    d3api.show("D:\\VScode\\java实验\\test1\\data.csv");
+}
+
 private void PointsToCsvFile(String filePath ){
     if (pointsList!=null && pointsList.size() > 0){
         // 表格头
@@ -116,28 +126,23 @@ private void PointsToCsvFile(String filePath ){
         }
     }
 }
+
 public void addPoints(String pointId,String x,String y){
 	pointsList.add(new PointsParamDto(pointId,x,y));
 }
+
 public void show(String filePath){
     PointsToCsvFile(filePath);
     try {
         // 执行二进制文件
         @SuppressWarnings("deprecation")
         Process process = Runtime.getRuntime().exec(".\\RUN.bat");
-    
+
         // 等待命令执行完成
         process.waitFor();
     } catch (IOException | InterruptedException e) {
         e.printStackTrace();
     }
-    
-}
-public static void main(String[] args) {
-    D3api d3api = new D3api();
-    d3api.addPoints("1","10","20");
-    d3api.addPoints("2","30","40");
-    d3api.addPoints("3","50","60"); 
-    d3api.show("D:\\VScode\\java实验\\test1\\data.csv");
+
 }
 }
