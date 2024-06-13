@@ -270,7 +270,7 @@ public class WeightedDirectedGraph {
           brigeStrings[brigeNum++] = i;
         }
       }
-      String x = "";
+      String x ="";
       if (brigeNum != 0) {
         System.out.printf("The bridge words from \"%s\" to \"%s\" is: ", start, end);
         if (brigeNum == 1) {
@@ -280,12 +280,12 @@ public class WeightedDirectedGraph {
 
         for (int i = 0; i < brigeNum - 1; i++) {
           System.out.printf("%s、", brigeStrings[i]);
-          x.concat(brigeStrings[i]);
-          x.concat("、");
+          x=x.concat(brigeStrings[i]);
+          x=x.concat("、");
         }
         System.out.printf("and %s\n", brigeStrings[brigeNum - 1]);
-        x.concat("and ");
-        x.concat(brigeStrings[brigeNum - 1]);
+        //x.concat("and ");
+        x=x.concat(brigeStrings[brigeNum - 1]);
         return x;
       } else {
         System.out.println("No bridge words from \"" + start + "\" to \"" + end + "\" !");
@@ -441,8 +441,8 @@ public class WeightedDirectedGraph {
         settempadjTable(predecessors[vertexIndex], vertexIndex);
     }
     System.out.print(getNodeName(vertexIndex) + " ");
-    x.concat(getNodeName(vertexIndex));
-    x.concat(" ");
+    x=x.concat(getNodeName(vertexIndex));
+    x=x.concat(" ");
   }
 
   // 随机游走
@@ -458,8 +458,8 @@ public class WeightedDirectedGraph {
       String x = "";
 
       System.out.print(start + " ");
-      x.concat(start);
-      x.concat(" ");
+      x=x.concat(start);
+      x=x.concat(" ");
       int current = getNodeIndex(start);
       int last = current;
 
@@ -482,8 +482,8 @@ public class WeightedDirectedGraph {
         }
         current = getNodeIndex(neighbor);
         System.out.print(getNodeName(current) + " ");
-        x.concat(getNodeName(current));
-        x.concat(" ");
+        x=x.concat(getNodeName(current));
+        x=x.concat(" ");
         // 如果遇到重复的边，停止S
         if (visited[last][current] == -1) {
           break;

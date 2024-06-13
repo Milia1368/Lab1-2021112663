@@ -23,7 +23,9 @@ public class lab1 {
   }
 
   static String queryBridgeWords(WeightedDirectedGraph graph, String word1, String word2) { // 查询桥接词
-    return graph.findBridgeWords(word1, word2);
+     String x = graph.findBridgeWords(word1, word2);
+    // System.out.println(x);
+     return x;
   }
 
   static String generateNewText(WeightedDirectedGraph graph, String inputText) { // 生成新文本
@@ -59,6 +61,7 @@ public class lab1 {
       // 将字节数组转换为字符串
       String text = new String(bytes);
       WeightedDirectedGraph graph = new WeightedDirectedGraph();
+      WeightedDirectedGraph graph1 = new WeightedDirectedGraph();
       createGraph(graph, text);
 
       // 创建图完毕
