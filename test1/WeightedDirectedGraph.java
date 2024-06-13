@@ -1,10 +1,8 @@
 package test1;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 // import java.util.zip.Inflater;
-import java.util.Random;
+
 
 /**
 * @
@@ -253,9 +251,10 @@ public class WeightedDirectedGraph {
 
     return adjTable;
   }
+  // 只返回第一个桥接词
 
-  public String findBridgeWords(String start, String end) // 只返回第一个桥接词
-      {
+  public String findBridgeWords(String start, String end) {
+
     int flag = 0;
     String[] brigeStrings = new String[100];
     int brigeNum = 0;
@@ -274,7 +273,6 @@ public class WeightedDirectedGraph {
       String x = "";
       if (brigeNum != 0) {
         System.out.printf("The bridge words from \"%s\" to \"%s\" is: ", start, end);
-
         if (brigeNum == 1) {
           System.out.printf("%s\n", brigeStrings[0]);
           return brigeStrings[0];
@@ -293,9 +291,9 @@ public class WeightedDirectedGraph {
         System.out.println("No bridge words from \"" + start + "\" to \"" + end + "\" !");
       }
     } else {
-      if (flag == 1) {
+      if (flag == 2) {
         System.out.println("No \"" + start + "\" in the graph!");
-      } else if (flag == 2) {
+      } else if (flag == 1) {
         System.out.println("No \"" + end + "\" in the graph!");
       } else {
         System.out.println("No \"" + start + "\" and \"" + end + "\" in the graph!");
@@ -423,9 +421,9 @@ public class WeightedDirectedGraph {
         return x;
       }
     } else {
-      if (flag == 1) {
+      if (flag == 2) {
         System.out.println("No \"" + start + "\" in the graph!");
-      } else if (flag == 2) {
+      } else if (flag == 1) {
         System.out.println("No \"" + end + "\" in the graph!");
       } else {
         System.out.println("No \"" + start + "\" and \"" + end + "\" in the graph!");
@@ -468,9 +466,14 @@ public class WeightedDirectedGraph {
       while (true) {
 
         // 获取用户输入
-        String userInput = System.console().readLine("输入q以停止循环:");
+        //String userInput = System.console().readLine("输入q以停止循环:");
         // 如果用户输入是"q"，就退出循环
+        Scanner scanner1 = new Scanner(System.in);
+
+        System.out.println("输入q以停止循环:");
+        String userInput = scanner1.nextLine();
         if ("q".equals(userInput)) {
+          scanner1.close();
           return null;
         }
         String neighbor = getRandomNeighbor(getNodeName(current));
