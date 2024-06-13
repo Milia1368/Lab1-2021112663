@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -41,7 +43,17 @@ public class lab1 {
 
   static String randomWalk(WeightedDirectedGraph graph) { // 随机游走
     int randomIndex = new Random().nextInt(graph.getSize());
-    return graph.walkBian(graph.getNodeName(randomIndex));
+    String x = graph.walkBian(graph.getNodeName(randomIndex));
+    String path = "./randomwalk.txt"; // 指定文件路径
+
+    try {
+      // 将字符串写入文件，StandardCharsets.UTF_8指定编码
+      Files.writeString(Paths.get(path), x);
+      System.out.println("随机游走路径成功写入文件！");
+    } catch (IOException e) {
+      System.err.println("写入文件时发生错误: " + e.getMessage());
+    }
+    return x;
   }
 
   // 主函数
@@ -76,7 +88,13 @@ public class lab1 {
         System.out.println("0. 退出");
         //int choice = Integer.parseInt(System.console().readLine());
         Scanner scanner = new Scanner(System.in);
-        int choice = Integer.parseInt(scanner.nextLine());
+        int choice=0;
+        try {
+          choice = Integer.parseInt(scanner.nextLine());
+
+        } catch (NumberFormatException e) {
+          System.out.println("输入无效！请确保您输入的是一个整数。");
+        }
         switch (choice) {
           case 0:
             // 退出程序
