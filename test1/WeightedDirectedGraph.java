@@ -474,7 +474,7 @@ public class WeightedDirectedGraph {
         String userInput = scanner1.nextLine();
         if ("q".equals(userInput)) {
           scanner1.close();
-          return null;
+          return x;
         }
         String neighbor = getRandomNeighbor(getNodeName(current));
         if (neighbor == null) {

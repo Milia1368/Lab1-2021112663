@@ -1,19 +1,17 @@
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-
 import test1.WeightedDirectedGraph;
 
 public class lab1 {
-  //static WeightedDirectedGraph graph;
+  // static WeightedDirectedGraph graph;
 
   static void createGraph(WeightedDirectedGraph graph, String text) { // 构图
     ParserWord parser = new ParserWord();
     ArrayList<String> wordslist = new ArrayList<>(parser.parseWords(text));
     // 图的构建
-    //graph = new WeightedDirectedGraph();
+    // graph = new WeightedDirectedGraph();
     while (wordslist.size() >= 2) {
       graph.addEdge(wordslist.get(0), wordslist.get(1), 1);
       wordslist.remove(0);
@@ -25,9 +23,9 @@ public class lab1 {
   }
 
   static String queryBridgeWords(WeightedDirectedGraph graph, String word1, String word2) { // 查询桥接词
-     String x = graph.findBridgeWords(word1, word2);
+    String x = graph.findBridgeWords(word1, word2);
     // System.out.println(x);
-     return x;
+    return x;
   }
 
   static String generateNewText(WeightedDirectedGraph graph, String inputText) { // 生成新文本
@@ -37,7 +35,8 @@ public class lab1 {
     return graph.generateText(wordslist.toArray(new String[wordslist.size()]));
   }
 
-  static String calcShortestPath(WeightedDirectedGraph graph, String word1, String word2) { // 计算两个词的最短路径
+  static String calcShortestPath(
+      WeightedDirectedGraph graph, String word1, String word2) { // 计算两个词的最短路径
     return graph.shortestPath(word1, word2);
   }
 
@@ -45,13 +44,30 @@ public class lab1 {
     int randomIndex = new Random().nextInt(graph.getSize());
     String x = graph.walkBian(graph.getNodeName(randomIndex));
     String path = "./randomwalk.txt"; // 指定文件路径
+    if (x != null) {
+      try {
+        // 将字符串写入文件，StandardCharsets.UTF_8指定编码
+        Files.writeString(Paths.get(path), x);
+        System.out.println("随机游走路径成功写入文件！");
+      } catch (IOException e) {
+        System.err.println("写入文件时发生错误: " + e.getMessage());
+      }
+    }
+    return x;
+  }
 
-    try {
-      // 将字符串写入文件，StandardCharsets.UTF_8指定编码
-      Files.writeString(Paths.get(path), x);
-      System.out.println("随机游走路径成功写入文件！");
-    } catch (IOException e) {
-      System.err.println("写入文件时发生错误: " + e.getMessage());
+  static String randomWalk(WeightedDirectedGraph graph, String option) { // 随机游走
+    // int randomIndex = new Random().nextInt(graph.getSize());
+    String x = graph.walkBian(option.toLowerCase());
+    String path = "./randomwalk.txt"; // 指定文件路径
+    if (x != null) {
+      try {
+        // 将字符串写入文件，StandardCharsets.UTF_8指定编码
+        Files.writeString(Paths.get(path), x);
+        System.out.println("随机游走路径成功写入文件！");
+      } catch (IOException e) {
+        System.err.println("写入文件时发生错误: " + e.getMessage());
+      }
     }
     return x;
   }
@@ -86,9 +102,9 @@ public class lab1 {
         System.out.println("4. 计算两个词的最短路径");
         System.out.println("5. 随机游走");
         System.out.println("0. 退出");
-        //int choice = Integer.parseInt(System.console().readLine());
+        // int choice = Integer.parseInt(System.console().readLine());
         Scanner scanner = new Scanner(System.in);
-        int choice=0;
+        int choice = 0;
         try {
           choice = Integer.parseInt(scanner.nextLine());
 
